@@ -75,15 +75,8 @@ public struct WPCountry {
     ///     WPCountry.TimorLeste.localizedName // Optional("Timor-Leste")
     ///
     public var localizedName: String? {
-        if let languageCode = NSLocale.current.languageCode {
-            let locale = NSLocale(localeIdentifier: languageCode)
-            let countryCode = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: isoCode])
-            if let countyName = locale.displayName(forKey: NSLocale.Key.identifier, value: countryCode) {
-                return countyName
-            }
-        }
-        
-        return nil
+        let languageCode = NSLocale.current.languageCode ?? ""
+        return localizedName(forRegion: languageCode)
     }
     
     /// The flag emoji of this country.
@@ -94,6 +87,25 @@ public struct WPCountry {
     ///
     public var flagEmoji: Character {
         return Character.flagEmoji(forRegion: isoCode) ?? Character("🏴")
+    }
+    
+    
+    // MARK: Methods
+    
+    /// Returns a localized name of this country for a certain region.
+    ///
+    ///     let country = WPCountry.Russia
+    ///     country.localizedName(forRegion: "en") // Optional("Russia")
+    ///     country.localizedName(forRegion: "ru") // Optional("Россия")
+    ///     country.localizedName(forRegion: "fr") // Optional("Russie")
+    ///
+    public func localizedName(forRegion languageCode: String) -> String? {
+        let locale = NSLocale(localeIdentifier: languageCode)
+        let countryCode = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: isoCode])
+        if let countyName = locale.displayName(forKey: NSLocale.Key.identifier, value: countryCode) {
+            return countyName
+        }
+        return nil
     }
     
     
