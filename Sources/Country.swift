@@ -17,12 +17,12 @@ import Foundation
 ///     let country: WPCountry = .Turkey
 ///     country.isoCode // "TR"
 ///
-/// You can also get the list of countries as in the following code:
+/// You can also work with the list of countries as in the following code:
 ///
+///     // Top 10 European countries by population
 ///     let countries = WPCountry.allEuropeanCountries
 ///         .sortedByPopulation
 ///         .top(10)
-///         .shuffled()
 ///
 public struct WPCountry {
     
