@@ -10,6 +10,11 @@ extension Array where Element == WPCountry {
         return sorted { $0.area > $1.area }
     }
     
+    /// Returns the array of countries sorted by name.
+    public var sortedByName: [WPCountry] {
+        return sorted { $0.systemName < $1.systemName }
+    }
+    
     /// Returns the first K countries of this array.
     public func top(_ k: Int) -> [WPCountry] {
         guard k > 0 else { return [] }
