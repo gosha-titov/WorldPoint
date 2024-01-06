@@ -7,6 +7,15 @@ final class WorldPointTests: XCTestCase {
         return NSLocale.isoCountryCodes.filter { $0 != "AQ" } // Without Antarctica
     }
     
+    func testCountryCreation() -> Void {
+        XCTAssertEqual(WPCountry(isoCode: "RU"), .Russia)
+        XCTAssertEqual(WPCountry(isoCode: "cn"), .China)
+        XCTAssertEqual(WPCountry(isoCode: "US"), .UnitedStates)
+        XCTAssertEqual(WPCountry(isoCode: "br"), .Brazil)
+        XCTAssertEqual(WPCountry(isoCode: "Eg"), .Egypt)
+        XCTAssertEqual(WPCountry(isoCode: "AU"), .Australia)
+    }
+    
     func testISOCountryCodesPresence() -> Void {
         let sourceCodes = isoCountryCodes.sorted { $0 < $1 }
         let addedCodes = WPCountry.allCountries.map { $0.isoCode }.sorted { $0 < $1 }
