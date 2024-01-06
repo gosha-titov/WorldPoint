@@ -26,6 +26,22 @@ import Foundation
 ///
 public struct WPCountry {
     
+    /// Returns available countries of all continents.
+    ///
+    /// Countries are sorted by continent, not by name.
+    /// In order to sort countries by name, use the `sortedByName` property:
+    ///
+    ///     let countries = WPCountry.allCountries.sortedByName
+    ///
+    public static var allCountries: [WPCountry] {
+        return allEuropeanCountries +
+               allAsianCountries +
+               allNorthAmericanCountries +
+               allSouthAmericanCountries +
+               allAfricanCountries +
+               allAustralianCountries
+    }
+    
     /// The ISO country code consisting of a two-letter combination.
     ///
     ///     WPCountry.Russia.isoCode // "RU"
