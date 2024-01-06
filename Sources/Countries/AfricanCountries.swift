@@ -8,15 +8,16 @@ extension WPCountry {
             CaboVerde, Cameroon, CentralAfricanRepublic, CeutaAndMelilla, Chad, Comoros, CongoBrazzaville, CongoKinshasa,
             Djibouti,
             Egypt, EquatorialGuinea, Eritrea, Eswatini, Ethiopia,
+            FrenchSouthernTerritories,
             Gabon, Gambia, Ghana, Guinea, GuineaBissau,
             IvoryCoast,
             Kenya,
             Lesotho, Liberia, Libya,
-            Madagascar, Malawi, Mali, Mauritania, Mauritius, Morocco, Mozambique,
+            Madagascar, Malawi, Mali, Mauritania, Mauritius, Mayotte, Morocco, Mozambique,
             Namibia, Niger, Nigeria,
-            Rwanda,
-            SaoTomeAndPrincipe, Senegal, Seychelles, SierraLeone, Somalia, SouthAfrica, SouthSudan, Sudan,
-            Tanzania, Togo, Tunisia,
+            Reunion, Rwanda,
+            SaintHelena, SaoTomeAndPrincipe, Senegal, Seychelles, SierraLeone, Somalia, SouthAfrica, SouthSudan, Sudan,
+            Tanzania, Togo, TristanDaCunha, Tunisia,
             Uganda,
             WesternSahara,
             Zambia, Zimbabwe
@@ -108,6 +109,10 @@ extension WPCountry {
         return WPCountry(systemName: "Ethiopia", isoCode: "ET", continent: .Africa, population: 128_151_149, area: 1_104_300)
     }
     
+    public static var FrenchSouthernTerritories: WPCountry {
+        return WPCountry(systemName: "FrenchSouthernTerritories", isoCode: "TF", continent: .Africa, population: 300, area: 440_000)
+    }
+    
     public static var Gabon: WPCountry {
         return WPCountry(systemName: "Gabon", isoCode: "GA", continent: .Africa, population: 2_225_734, area: 267_668)
     }
@@ -168,6 +173,10 @@ extension WPCountry {
         return WPCountry(systemName: "Mauritius", isoCode: "MU", continent: .Africa, population: 1_271_768, area: 2_040)
     }
     
+    public static var Mayotte: WPCountry {
+        return WPCountry(systemName: "Mayotte", isoCode: "YT", continent: .Africa, population: 270_372, area: 374)
+    }
+    
     public static var Morocco: WPCountry {
         return WPCountry(systemName: "Morocco", isoCode: "MA", continent: .Africa, population: 36_910_560, area: 446_550)
     }
@@ -188,8 +197,16 @@ extension WPCountry {
         return WPCountry(systemName: "Nigeria", isoCode: "NG", continent: .Africa, population: 206_139_589, area: 923_768)
     }
     
+    public static var Reunion: WPCountry {
+        return WPCountry(systemName: "Reunion", isoCode: "RE", continent: .Africa, population: 859_959, area: 2_512)
+    }
+    
     public static var Rwanda: WPCountry {
         return WPCountry(systemName: "Rwanda", isoCode: "RW", continent: .Africa, population: 12_952_218, area: 26_338)
+    }
+    
+    public static var SaintHelena: WPCountry {
+        return WPCountry(systemName: "SaintHelena", isoCode: "SH", continent: .Africa, population: 5_661, area: 420)
     }
     
     public static var SaoTomeAndPrincipe: WPCountry {
@@ -230,6 +247,10 @@ extension WPCountry {
     
     public static var Togo: WPCountry {
         return WPCountry(systemName: "Togo", isoCode: "TG", continent: .Africa, population: 8_278_724, area: 56_785)
+    }
+    
+    public static var TristanDaCunha: WPCountry {
+        return WPCountry(systemName: "TristanDaCunha", isoCode: "TA", continent: .Africa, population: 264, area: 207)
     }
     
     public static var Tunisia: WPCountry {

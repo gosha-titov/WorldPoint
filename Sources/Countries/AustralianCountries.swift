@@ -4,9 +4,10 @@ extension WPCountry {
     public static var allAustralianCountries: [WPCountry] {
         return [
             Australia, AmericanSamoa,
-            CookIslands,
+            ClippertonIsland, CookIslands,
             Fiji, FrenchPolynesia,
             Guam,
+            HeardAndMcDonaldIslands,
             Kiribati,
             MarshallIslands, Micronesia,
             Nauru, NewCaledonia, NewZealand, Niue, NorfolkIsland, NorthernMarianaIslands,
@@ -28,6 +29,10 @@ extension WPCountry {
         return WPCountry(systemName: "AmericanSamoa", isoCode: "AS", continent: .Australia, population: 45_035, area: 199)
     }
     
+    public static var ClippertonIsland: WPCountry {
+        return WPCountry(systemName: "ClippertonIsland", isoCode: "CP", continent: .Australia, population: 0, area: 9)
+    }
+    
     public static var CookIslands: WPCountry {
         return WPCountry(systemName: "CookIslands", isoCode: "CK", continent: .Australia, population: 17_459, area: 236)
     }
@@ -42,6 +47,10 @@ extension WPCountry {
     
     public static var Guam: WPCountry {
         return WPCountry(systemName: "Guam", isoCode: "GU", continent: .Australia, population: 170_534, area: 549)
+    }
+    
+    public static var HeardAndMcDonaldIslands: WPCountry {
+        return WPCountry(systemName: "HeardAndMcDonaldIslands", isoCode: "HM", continent: .Australia, population: 0, area: 368)
     }
     
     public static var Kiribati: WPCountry {

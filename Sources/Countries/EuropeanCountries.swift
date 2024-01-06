@@ -5,20 +5,21 @@ extension WPCountry {
         return [
             AlandIslands, Albania, Andorra, Austria,
             Belarus, Belgium, BosniaAndHerzegovina, Bulgaria,
-            Croatia, Cyprus, Czechia,
+            CanaryIslands, Croatia, Cyprus, Czechia,
             Denmark,
             Estonia,
             FaroeIslands, Finland, France,
             Germany, Gibraltar, Greece, Greenland, Guernsey,
             Hungary,
             Iceland, Ireland, IsleOfMan, Italy,
+            Jersey,
             Kosovo,
             Latvia, Liechtenstein, Lithuania, Luxembourg,
             Malta, Moldova, Monaco, Montenegro,
             Netherlands, NorthMacedonia, Norway,
             Poland, Portugal,
             Romania, Russia,
-            SanMarino, Serbia, Slovakia, Slovenia, Spain, Sweden, Switzerland,
+            SanMarino, Serbia, Slovakia, Slovenia, Spain, SvalbardAndJanMayen, Sweden, Switzerland,
             Ukraine, UnitedKingdom,
             VaticanCity
         ]
@@ -55,6 +56,10 @@ extension WPCountry {
     
     public static var Bulgaria: WPCountry {
         return WPCountry(systemName: "Bulgaria", isoCode: "BG", continent: .Europe, population: 6_951_482, area: 110_994)
+    }
+    
+    public static var CanaryIslands: WPCountry {
+        return WPCountry(systemName: "CanaryIslands", isoCode: "IC", continent: .Europe, population: 2_213_016, area: 7_492)
     }
     
     public static var Croatia: WPCountry {
@@ -127,6 +132,10 @@ extension WPCountry {
     
     public static var Italy: WPCountry {
         return WPCountry(systemName: "Italy", isoCode: "IT", continent: .Europe, population: 60_461_826, area: 301_340)
+    }
+    
+    public static var Jersey: WPCountry {
+        return WPCountry(systemName: "Jersey", isoCode: "JE", continent: .Europe, population: 103_200, area: 120)
     }
     
     public static var Kosovo: WPCountry {
@@ -211,6 +220,10 @@ extension WPCountry {
     
     public static var Spain: WPCountry {
         return WPCountry(systemName: "Spain", isoCode: "ES", continent: .Europe, population: 46_754_784, area: 505_990)
+    }
+    
+    public static var SvalbardAndJanMayen: WPCountry {
+        return WPCountry(systemName: "SvalbardAndJanMayen", isoCode: "SJ", continent: .Europe, population: 2_552, area: 377)
     }
     
     public static var Sweden: WPCountry {

@@ -5,14 +5,15 @@ extension WPCountry {
         return [
             Afghanistan, Armenia, Azerbaijan,
             Bahrain, Bangladesh, Bhutan, Brunei,
-            Cambodia, China,
+            Cambodia, ChagosArchipelago, China, ChristmasIsland, CocosIslands,
+            DiegoGarcia,
             Georgia,
             India, Indonesia, Iran, Iraq, Israel,
             HongKong,
             Japan, Jordan,
             Kazakhstan, Kuwait, Kyrgyzstan,
             Laos, Lebanon,
-            Malaysia, Maldives, Mongolia, Myanmar,
+            Macau, Malaysia, Maldives, Mongolia, Myanmar,
             Nepal, NorthKorea,
             Oman,
             Pakistan, Palestine, Philippines,
@@ -58,8 +59,24 @@ extension WPCountry {
         return WPCountry(systemName: "Cambodia", isoCode: "KH", continent: .Asia, population: 16_718_965, area: 181_035)
     }
     
+    public static var ChagosArchipelago: WPCountry {
+        return WPCountry(systemName: "ChagosArchipelago", isoCode: "IO", continent: .Asia, population: 4_000, area: 57)
+    }
+    
     public static var China: WPCountry {
         return WPCountry(systemName: "China", isoCode: "CN", continent: .Asia, population: 1_439_323_776, area: 9_596_961)
+    }
+    
+    public static var ChristmasIsland: WPCountry {
+        return WPCountry(systemName: "ChristmasIsland", isoCode: "CX", continent: .Asia, population: 1_402, area: 135)
+    }
+    
+    public static var CocosIslands: WPCountry {
+        return WPCountry(systemName: "CocosIslands", isoCode: "CC", continent: .Asia, population: 596, area: 14)
+    }
+    
+    public static var DiegoGarcia: WPCountry {
+        return WPCountry(systemName: "DiegoGarcia", isoCode: "DG", continent: .Asia, population: 4_000, area: 30)
     }
     
     public static var Georgia: WPCountry {
@@ -116,6 +133,10 @@ extension WPCountry {
     
     public static var Lebanon: WPCountry {
         return WPCountry(systemName: "Lebanon", isoCode: "LB", continent: .Asia, population: 6_825_445, area: 10_400)
+    }
+    
+    public static var Macau: WPCountry {
+        return WPCountry(systemName: "Macau", isoCode: "MO", continent: .Asia, population: 686_607, area: 118)
     }
     
     public static var Malaysia: WPCountry {
