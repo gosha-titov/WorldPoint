@@ -138,8 +138,23 @@ public struct WPCountry {
     ///     country.area // 783_562
     ///
     public init?(isoCode: String) {
+        let isoCode = isoCode.uppercased()
         guard NSLocale.isoCountryCodes.contains(isoCode) else { return nil }
-        return nil
+        if let country = WPCountry.allEuropeanCountries.first(where: { $0.isoCode == isoCode }) {
+            self = country
+        } else if let country = WPCountry.allAsianCountries.first(where: { $0.isoCode == isoCode }) {
+            self = country
+        } else if let country = WPCountry.allNorthAmericanCountries.first(where: { $0.isoCode == isoCode }) {
+            self = country
+        } else if let country = WPCountry.allSouthAmericanCountries.first(where: { $0.isoCode == isoCode }) {
+            self = country
+        } else if let country = WPCountry.allAfricanCountries.first(where: { $0.isoCode == isoCode }) {
+            self = country
+        } else if let country = WPCountry.allAustralianCountries.first(where: { $0.isoCode == isoCode }) {
+            self = country
+        } else {
+            return nil
+        }
     }
     
     /// Creates a country with the given general information.
