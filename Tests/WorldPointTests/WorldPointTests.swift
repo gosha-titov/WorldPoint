@@ -2,11 +2,24 @@ import XCTest
 @testable import WorldPoint
 
 final class WorldPointTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
-
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    
+    private var isoCountryCodes: [String] {
+        return NSLocale.isoCountryCodes.filter { $0 != "AQ" } // Without Antarctica
     }
+    
+    func testISOCountryCodesPresence() -> Void {
+        let sourceCodes = isoCountryCodes.sorted { $0 < $1 }
+        let addedCodes = WPCountry.allCountries.map { $0.isoCode }.sorted { $0 < $1 }
+        for (addedCode, sourceCode) in zip(addedCodes, sourceCodes) {
+            XCTAssertEqual(addedCode, sourceCode)
+        }
+    }
+    
+    func testCountriesCount() -> Void {
+        let sourceCodes = isoCountryCodes
+        let addedCodes = WPCountry.allCountries.map { $0.isoCode }
+        XCTAssertEqual(addedCodes.count, sourceCodes.count)
+    }
+    
 }
+
