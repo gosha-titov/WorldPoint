@@ -30,5 +30,28 @@ final class WorldPointTests: XCTestCase {
         XCTAssertEqual(addedCodes.count, sourceCodes.count)
     }
     
+    func testCountryEncodingDecoding() -> Void {
+        let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
+        let country1: WPCountry = .Russia
+        let country2: WPCountry = .China
+        let country3: WPCountry = .UnitedStates
+        let country4: WPCountry = .Brazil
+        let country5: WPCountry = .Egypt
+        let country6: WPCountry = .Australia
+        
+        func encodeDecode(_ country: WPCountry) throws -> WPCountry {
+            let encoded = try encoder.encode(country)
+            let decoded = try decoder.decode(WPCountry.self, from: encoded)
+            return decoded
+        }
+        XCTAssertEqual(try encodeDecode(country1), country1)
+        XCTAssertEqual(try encodeDecode(country2), country2)
+        XCTAssertEqual(try encodeDecode(country3), country3)
+        XCTAssertEqual(try encodeDecode(country4), country4)
+        XCTAssertEqual(try encodeDecode(country5), country5)
+        XCTAssertEqual(try encodeDecode(country6), country6)
+    }
+    
 }
 

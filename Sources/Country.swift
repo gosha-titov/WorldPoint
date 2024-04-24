@@ -2,7 +2,7 @@ import Foundation
 
 /// A country with the corresponding general information.
 ///
-/// In order to create a certain country, you should specify its ISO country code:
+/// In order to create a certain country, you just need to specify its ISO country code:
 ///
 ///     let country = WPCountry(isoCode: "TR")!
 ///     country.systemName // "Turkey"
@@ -17,14 +17,15 @@ import Foundation
 ///     let country: WPCountry = .Turkey
 ///     country.isoCode // "TR"
 ///
-/// You can also work with the list of countries as in the following code:
+/// You can also work with the list of countries as in the following example:
 ///
 ///     // Top 10 European countries by population
-///     let countries = WPCountry.allEuropeanCountries
+///     let countries = WPCountry
+///         .allEuropeanCountries
 ///         .sortedByPopulation
 ///         .top(10)
 ///
-public struct WPCountry {
+public struct WPCountry: Equatable {
     
     /// Returns available countries of all continents.
     ///
@@ -84,7 +85,7 @@ public struct WPCountry {
     ///
     public var systemName: String
     
-    /// A name of this country localized to the current device language if possible; otherwise, `nil`.
+    /// The name of this country localized to the current device language if possible; otherwise, `nil`.
     ///
     ///     WPCountry.Turkey.localizedName // Optional("Türkiye")
     ///     WPCountry.Myanmar.localizedName // Optional("Myanmar [Burma]")
@@ -157,7 +158,7 @@ public struct WPCountry {
         }
     }
     
-    /// Creates a country with the given general information.
+    /// Creates a country with the given general information manually.
     internal init(systemName: String, isoCode: String, continent: WPContinent, population: Int, area: Int) {
         self.systemName = systemName
         self.isoCode = isoCode
@@ -169,14 +170,33 @@ public struct WPCountry {
 }
 
 
-extension WPCountry: Equatable {
+
+// MARK: - Encoding & Decoding
+
+extension WPCountry: Codable {
     
-    public static func == (lhs: WPCountry, rhs: WPCountry) -> Bool {
-        return lhs.systemName == rhs.systemName &&
-               lhs.isoCode == rhs.isoCode &&
-               lhs.population == rhs.population &&
-               lhs.area == rhs.area &&
-               lhs.continent == rhs.continent
+    internal enum CodingKeys: String, CodingKey {
+        case isoCode = "iso_code"
+    }
+    
+    internal enum CreationError: Error {
+        case invalidISOCode
+    }
+    
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(isoCode, forKey: .isoCode)
+    }
+    
+    public init(from decoder: any Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let isoCode = try values.decode(String.self, forKey: .isoCode)
+        if let country = WPCountry(isoCode: isoCode) {
+            self = country
+        } else {
+            throw CreationError.invalidISOCode
+        }
     }
     
 }
+
