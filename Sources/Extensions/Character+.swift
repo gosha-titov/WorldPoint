@@ -3,7 +3,7 @@ import Foundation
 extension Character {
     
     /// Returns the flag emoji for a specific ISO country code.
-    internal static func flagEmoji(forRegion countryCode: String) -> Character? {
+    @inlinable internal static func flagEmoji(forRegion countryCode: String) -> Character? {
         guard NSLocale.isoCountryCodes.contains(countryCode) else { return nil }
         let countryCode = countryCode.uppercased()
         let offset: UInt32 = 127397

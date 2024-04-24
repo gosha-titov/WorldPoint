@@ -1,29 +1,25 @@
-extension Array where Element == WPCountry {
+public extension Array where Element == WPCountry {
     
     /// Returns the array of countries sorted by population.
-    public var sortedByPopulation: [WPCountry] {
+    @inlinable var sortedByPopulation: [WPCountry] {
         return sorted { $0.population > $1.population }
     }
     
     /// Returns the array of countries sorted by area.
-    public var sortedByArea: [WPCountry] {
+    @inlinable var sortedByArea: [WPCountry] {
         return sorted { $0.area > $1.area }
     }
     
     /// Returns the array of countries sorted by name.
-    public var sortedByName: [WPCountry] {
+    @inlinable var sortedByName: [WPCountry] {
         return sorted { $0.systemName < $1.systemName }
     }
     
     /// Returns the first K countries of this array.
-    public func top(_ k: Int) -> [WPCountry] {
+    @inlinable func top(_ k: Int) -> [WPCountry] {
         guard k > 0 else { return [] }
         let k = k > count ? count : k
-        var array = [Element]()
-        for i in 0..<k {
-            array.append(self[i])
-        }
-        return array
+        return Array(self[0..<k])
     }
     
 }
