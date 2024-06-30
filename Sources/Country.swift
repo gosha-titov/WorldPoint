@@ -25,7 +25,7 @@ import Foundation
 ///         .sortedByPopulation
 ///         .top(10)
 ///
-public struct WPCountry: Equatable {
+public struct WPCountry {
     
     /// Returns available countries of all continents.
     ///
@@ -119,8 +119,8 @@ public struct WPCountry: Equatable {
     public func localizedName(forRegion languageCode: String) -> String? {
         let locale = NSLocale(localeIdentifier: languageCode)
         let countryCode = NSLocale.localeIdentifier(fromComponents: [NSLocale.Key.countryCode.rawValue: isoCode])
-        if let countyName = locale.displayName(forKey: NSLocale.Key.identifier, value: countryCode) {
-            return countyName
+        if let countryName = locale.displayName(forKey: NSLocale.Key.identifier, value: countryCode) {
+            return countryName
         }
         return nil
     }
@@ -175,22 +175,18 @@ public struct WPCountry: Equatable {
 
 extension WPCountry: Codable {
     
-    internal enum CodingKeys: String, CodingKey {
-        case isoCode = "iso_code"
-    }
-    
-    internal enum CreationError: Error {
+    public enum CreationError: Error {
         case invalidISOCode
     }
     
     public func encode(to encoder: any Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(isoCode, forKey: .isoCode)
+        var container = encoder.singleValueContainer()
+        try container.encode(isoCode)
     }
     
     public init(from decoder: any Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        let isoCode = try values.decode(String.self, forKey: .isoCode)
+        let container = try decoder.singleValueContainer()
+        let isoCode = try container.decode(String.self)
         if let country = WPCountry(isoCode: isoCode) {
             self = country
         } else {
@@ -200,3 +196,23 @@ extension WPCountry: Codable {
     
 }
 
+
+
+// MARK: - Hashable, Equatable
+
+extension WPCountry: Hashable {
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(isoCode)
+    }
+    
+}
+
+
+extension WPCountry: Equatable {
+    
+    public static func == (lhs: WPCountry, rhs: WPCountry) -> Bool {
+        return lhs.isoCode == rhs.isoCode
+    }
+    
+}

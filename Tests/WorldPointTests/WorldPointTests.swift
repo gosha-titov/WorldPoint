@@ -4,7 +4,7 @@ import XCTest
 final class WorldPointTests: XCTestCase {
     
     private var isoCountryCodes: [String] {
-        return NSLocale.isoCountryCodes.filter { $0 != "AQ" } // Without Antarctica
+        return NSLocale.isoCountryCodes.filter { $0 != "AQ" && $0 != "CQ" } // Without Antarctica and "the island of Sark"
     }
     
     func testCountryCreation() -> Void {
@@ -30,7 +30,7 @@ final class WorldPointTests: XCTestCase {
         XCTAssertEqual(addedCodes.count, sourceCodes.count)
     }
     
-    func testCountryEncodingDecoding() -> Void {
+    func testCountryCodable() -> Void {
         let encoder = JSONEncoder()
         let decoder = JSONDecoder()
         let country1: WPCountry = .Russia
@@ -51,6 +51,12 @@ final class WorldPointTests: XCTestCase {
         XCTAssertEqual(try encodeDecode(country4), country4)
         XCTAssertEqual(try encodeDecode(country5), country5)
         XCTAssertEqual(try encodeDecode(country6), country6)
+    }
+    
+    func testCountryHashable() -> Void {
+        let array = WPCountry.allCountries
+        let set = Set(array)
+        XCTAssertEqual(array.count, set.count)
     }
     
 }
